@@ -1,0 +1,28 @@
+provider:
+  name: synthetic
+  interval_ms: 1000
+  seed: 42
+
+instruments:
+  - symbol: EURUSD
+    timeframe: 1m
+    initial_price: 1.0900
+  - symbol: AAPL
+    timeframe: 1m
+    initial_price: 180.00
+
+strategies:
+  - name: rsi_ema
+    parameters:
+      rsi_period: 14
+      ema_fast: 9
+      ema_slow: 21
+      rsi_overbought: 70
+      rsi_oversold: 30
+      min_history: 50
+      expiry_seconds: 300
+
+sinks:
+  - name: console
+    parameters:
+      pretty: true
